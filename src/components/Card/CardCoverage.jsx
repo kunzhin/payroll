@@ -4,7 +4,7 @@ import AmountPayout from "../AmountPayout";
 
 import {inputCoverage, totalBonus, totalPayout} from "../../redux/actions";
 
-function CardCoverage(props){
+function CardCoverage(){
     const dispatch = useDispatch()
 
     const coveragePercentChange = (e) => {
@@ -22,7 +22,7 @@ function CardCoverage(props){
                         label="Покрытие"
                         type="number"
                         id="coverage"
-                        placeholder="Покрытие"
+                        placeholder="Покрытие, ТТ"
                         onChange={coveragePercentChange}
                     />
                 </div>
