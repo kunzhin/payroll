@@ -1,4 +1,4 @@
-import { volume, topSku, volumeIncreasingRatio } from "../../data/bonusScheme";
+import { volume, topSku, volumeIncreasingRatio, strength } from "../../data/bonusScheme";
 import {
     INPUT_DAY_WORK,
     INPUT_DAY_WORKED,
@@ -74,7 +74,7 @@ const initialState = {
 }
 
 const volumeRatioCheck = (percent) => {
-    let volumeRatio = 0
+    let volumeRatio
     if (percent < 95) {
         volumeRatio = 0
     } else if (percent >= 95 && percent < 100) {
@@ -86,7 +86,7 @@ const volumeRatioCheck = (percent) => {
 }
 
 const topRatioCheck = (percent) => {
-    let topRatio = 0
+    let topRatio
     if (percent < 93) {
         topRatio = 0
     } else if (percent >= 93 && percent <=98){
@@ -284,8 +284,8 @@ export const inputSalaryReducer = (state = initialState, action) => {
             }
         case STRENGTH_COFFEE:
             let strCoffeeBonus = 0
-            if (action.percent >= 100) {
-                strCoffeeBonus = state.payoutSalary * 0.1
+            if (action.percent >= 101) {
+                strCoffeeBonus = state.payoutSalary * strength.coffee
             }
             return {
                 ...state,
@@ -307,7 +307,7 @@ export const inputSalaryReducer = (state = initialState, action) => {
         case STRENGTH_MAGGI:
             let strMaggiBonus = 0
             if (action.percent >= 110 && state.strengthPurinaPercent >= 100) {
-                strMaggiBonus = state.payoutSalary * 0.1
+                strMaggiBonus = state.payoutSalary * strength.culinaryPurina
             }
             return {
                 ...state,
@@ -329,7 +329,7 @@ export const inputSalaryReducer = (state = initialState, action) => {
         case STRENGTH_PURINA:
             let strPurinaBonus = 0
             if (action.percent >= 100 && state.strengthMaggiPercent >= 110) {
-                strPurinaBonus = state.payoutSalary * 0.1
+                strPurinaBonus = state.payoutSalary * strength.culinaryPurina
             }
             return {
                 ...state,

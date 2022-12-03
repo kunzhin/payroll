@@ -26,7 +26,7 @@ const topSku = {
 }
 
 const strength = {
-    coffee: 0.1,
+    coffee: 0.25,
     culinaryPurina: 0.1
 }
 
