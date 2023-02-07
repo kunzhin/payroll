@@ -284,7 +284,7 @@ export const inputSalaryReducer = (state = initialState, action) => {
             }
         case STRENGTH_COFFEE:
             let strCoffeeBonus = 0
-            if (action.percent >= 101) {
+            if (action.percent >= 100) {
                 strCoffeeBonus = state.payoutSalary * strength.coffee
             }
             return {
